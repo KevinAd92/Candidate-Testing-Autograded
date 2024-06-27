@@ -32,13 +32,26 @@ function askQuestion() {
 
 function gradeQuiz(candidateAnswers) {
  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
- if (candidateAnswer === correctAnswer) {
-  return console.log(candidateAnswer + " is correct!");
- } else {
-  return console.log(candidateAnswer + " Is incorrect. The correct answer is: Sally Ride");
+// if (candidateAnswer === correctAnswer) {
+ // return console.log(candidateAnswer + " is correct!");
+ //} else {
+ // return console.log(candidateAnswer + " Is incorrect. The correct answer is: ");
+ //}
+ // let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+ let score = 0;
+ for (i = 0; i < candidateAnswers.length; i++) {
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+      score += 1;
+    }
  }
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
+ let grade = Number(score)*20
+ if (score >= 4) {
+   console.log(`>>> Overall Grade: ${grade}% (${score} of 5 responses correct) <<<
+>>> Status: PASS <<<`)   
+ } else {
+   console.log(`>>> Overall Grade: ${grade}% (${score} of 5 responses correct) <<<
+>>> Status: FAILED <<<`)
+ }
   return grade;
 }
 
